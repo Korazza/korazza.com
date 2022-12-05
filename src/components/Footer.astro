@@ -1,0 +1,40 @@
+---
+import { Icon } from 'astro-icon'
+
+export interface Contact {
+	icon: string
+	color: string
+	href: string
+}
+
+export interface Props {
+	contacts: Contact[]
+}
+
+const { contacts } = Astro.props
+---
+
+<div
+	class='flex flex-col w-full mb-12 md:mb-auto mt-6 py-6 place-items-center bg-black bg-opacity-30 backdrop-blur-sm'
+>
+	<section class='flex flex-col place-items-center gap-2'>
+		<h3 id='contacts' class='text-2xl font-extrabold'>Contacts</h3>
+		<div class='flex gap-2 text-sm'>
+			{
+				contacts.map(({ icon, color, href }) => (
+					<a
+						class='p-1 w-full bg-slate-600 bg-opacity-30 backdrop-blur-sm rounded-lg shadow'
+						target="_blank"
+						href={href}
+					>
+						<Icon class='inline w-6' style={`color: ${color};`} name={icon} />
+					</a>
+				))
+			}
+		</div>
+	</section>
+	<p class='mt-4'>
+		Built with <Icon class='inline w-5 text-rose-500' name='ion:heart' /> using
+		<a class='font-bold text-[#ff5e00]' href='https://astro.build'>Astro</a>
+	</p>
+</div>

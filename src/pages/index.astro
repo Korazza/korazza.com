@@ -1,0 +1,59 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Projects from '../components/Projects.astro'
+
+const GITHUB_USER = 'Korazza'
+---
+
+<Layout title={GITHUB_USER}>
+	<main
+		class='m-auto p-6 max-w-xl md:max-w-2xl lg:max-w-5xl flex flex-col gap-6'
+	>
+		<section class='text-center md:text-start'>
+			<h1
+				class='m-0 text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-purple-600 to-rose-600 bg-[length:200%]'
+			>
+				Roberto Coratti
+			</h1>
+			<p class='mt-2 text-xl md:text-2xl text-slate-100 font-semibold'>
+				{GITHUB_USER}
+				<span class='text-slate-400 font-light'>(Developer)</span> based in Italy
+			</p>
+		</section>
+		<section>
+			<h3
+				id='about'
+				class='mb-4 text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-purple-600 to-rose-600'
+			>
+				About
+			</h3>
+			<div
+				class='px-3 py-2 z-10 text-lg text-slate-200 bg-gradient-to-r from-slate-700 to-purple-700/10 bg-opacity-30 backdrop-blur-sm rounded-lg shadow shadow-slate-800'
+			>
+				<p>
+					I am a freelance and full-stack developer based in Rome with a passion
+					for building digital services and experiences
+				</p>
+				<hr
+					class='my-2 w-full h-px border-none bg-gradient-to-r from-purple-600/70 to-rose-600/70'
+				/>
+				<p>
+					I am currently studying computer science at the University of Rome Tor
+					Vergata with no developer work experience
+				</p>
+			</div>
+		</section>
+		<section>
+			<h3
+				id='projects'
+				class='mb-4 text-3xl font-extrabold bg-clip-text text-transparent bg-gradient-to-tr from-purple-600 to-rose-600'
+			>
+				Projects
+			</h3>
+			<Projects
+				user={GITHUB_USER}
+				filters={['dotfiles', 'templay', 'korazza.com']}
+			/>
+		</section>
+	</main>
+</Layout>

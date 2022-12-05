@@ -1,0 +1,43 @@
+---
+import RepoCard from '../components/RepoCard.astro'
+
+export interface Props {
+	user: string
+	filters: string[]
+}
+
+const { user, filters } = Astro.props
+
+interface Repo {
+	id: number
+	name: string
+	full_name: string
+	description: string
+}
+
+const response = await fetch(
+	`https://api.github.com/users/${user}/repos?type=public&sort=created`,
+	{ headers: [['Authorization', `Bearer ${import.meta.env.CR_PAT}`]] }
+)
+const repos: Repo[] = ((await response.json()) as Repo[]).filter(
+	(repo) =>
+		repo.name !== user && filters.every((filter) => filter !== repo.name)
+)
+---
+
+<ul
+	role='list'
+	class='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row gap-6 items-stretch'
+>
+	{
+		repos.map((repo) => (
+			<li class='h-full'>
+				<RepoCard
+					href={`https://github.com/${repo.full_name}`}
+					title={repo.name}
+					body={repo.description}
+				/>
+			</li>
+		))
+	}
+</ul>

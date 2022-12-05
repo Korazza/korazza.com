@@ -1,0 +1,112 @@
+---
+import Navbar from '../components/Navbar.astro'
+import Footer from '../components/Footer.astro'
+
+export interface Props {
+	title: string
+}
+
+const { title } = Astro.props
+---
+
+<!DOCTYPE html>
+<html lang='en'>
+	<head>
+		<meta charset='UTF-8' />
+		<meta name='viewport' content='width=device-width' />
+		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
+		<meta name='generator' content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body class='bg-slate-700 text-slate-100'>
+		<header class='md:mb-12'>
+			<Navbar items={['About', 'Projects', 'Contacts']} />
+		</header>
+		<slot />
+		<footer>
+			<Footer
+				contacts={[
+					{
+						icon: 'ion:mail',
+						color: '#f59e0b',
+						href: 'mailto:corattiroberto@gmail.com',
+					},
+					{
+						icon: 'ion:logo-github',
+						color: '#f5f5f5',
+						href: 'https://github.com/Korazza',
+					},
+					{
+						icon: 'ion:logo-twitter',
+						color: '#1da1f2',
+						href: 'https://twitter.com/MrKorazza',
+					},
+					{
+						icon: 'ion:logo-reddit',
+						color: '#ff5700',
+						href: 'https://www.reddit.com/user/MrKorazza',
+					},
+					{
+						icon: 'ion:logo-discord',
+						color: '#7289da',
+						href: 'https://discordapp.com/users/Korazza#3063',
+					},
+					{
+						icon: 'ion:logo-paypal',
+						color: '#0079c1',
+						href: 'https://paypal.me/robertocoratti',
+					},
+				]}
+			/>
+		</footer>
+	</body>
+</html>
+
+<style is:global>
+	body {
+		background: radial-gradient(
+				circle at top left,
+				transparent 9%,
+				rgb(71 85 105 / 0.3) 10%,
+				rgb(71 85 105 / 0.3) 15%,
+				transparent 16%
+			),
+			radial-gradient(
+				circle at bottom left,
+				transparent 9%,
+				rgb(71 85 105 / 0.3) 10%,
+				rgb(71 85 105 / 0.3) 15%,
+				transparent 16%
+			),
+			radial-gradient(
+				circle at top right,
+				transparent 9%,
+				rgb(71 85 105 / 0.3) 10%,
+				rgb(71 85 105 / 0.3) 15%,
+				transparent 16%
+			),
+			radial-gradient(
+				circle at bottom right,
+				transparent 9%,
+				rgb(71 85 105 / 0.3) 10%,
+				rgb(71 85 105 / 0.3) 15%,
+				transparent 16%
+			),
+			radial-gradient(circle, transparent 25%, rgb(51 65 85) 26%),
+			linear-gradient(
+				45deg,
+				transparent 46%,
+				rgb(71 85 105 / 0.3) 47%,
+				rgb(71 85 105 / 0.3) 52%,
+				transparent 53%
+			),
+			linear-gradient(
+				135deg,
+				transparent 46%,
+				rgb(71 85 105 / 0.3) 47%,
+				rgb(71 85 105 / 0.3) 52%,
+				transparent 53%
+			);
+		background-size: 2em 2em;
+	}
+</style>
